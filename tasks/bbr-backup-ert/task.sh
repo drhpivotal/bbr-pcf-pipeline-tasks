@@ -11,5 +11,5 @@ pushd ert-backup-artifact
 
   BACKUPNAME="ert-backup-$(date '+%m%d%y-%H%M%S').tar"
   tar -cvf $BACKUPNAME -- *
-  gpg --yes --batch --passphrase=$PASSPHRASE -c $BACKUPNAME.gpg
+  gpg --yes --batch --passphrase=$PASSPHRASE -c $BACKUPNAME
 popd
