@@ -10,6 +10,8 @@ pushd ert-backup-artifact
   backup --with-manifest
 
   BACKUPNAME="ert-backup-$(date '+%m%d%y-%H%M%S').tar"
+  echo Archiving $BACKUPNAME
   tar -cvf $BACKUPNAME -- *
-  gpg --yes --batch --passphrase=$PASSPHRASE -c $BACKUPNAME
+  echo Encrypting $BACKUPNAME
+  gpg --yes --quiet --batch --passphrase=$PASSPHRASE -c $BACKUPNAME
 popd
