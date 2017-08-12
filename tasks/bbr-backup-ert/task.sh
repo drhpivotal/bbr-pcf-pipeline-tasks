@@ -9,5 +9,7 @@ pushd ert-backup-artifact
   --ca-cert "${BOSH_CA_CERT_PATH}" \
   backup --with-manifest
 
-  tar -cvf "ert-backup-$(date '+%m%d%y-%H%M%S').tar" -- *
+  BACKUPNAME="ert-backup-$(date '+%m%d%y-%H%M%S').tar"
+  tar -cvf $BACKUPNAME -- *
+  gpg --yes --batch --passphrase=$PASSPHRASE -c $BACKUPNAME.gpg
 popd
