@@ -11,5 +11,9 @@ pushd director-backup-artifact
   --private-key-path <(echo "${BBR_PRIVATE_KEY}") \
   backup
 
-  tar -cvf director-backup.tar -- *
+  BACKUPNAME="director-backup-$(date '+%m%d%y-%H%M%S').tar"
+  echo Archiving $BACKUPNAME
+  tar -cvf $BACKUPNAME -- *
+  echo Encrypting $BACKUPNAME
+  gpg --yes --quiet --batch --passphrase=$PASSPHRASE -c $BACKUPNAME
 popd
