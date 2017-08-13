@@ -12,6 +12,11 @@ pushd ert-backup-artifact
   BACKUPNAME="ert-backup-$(date '+%m%d%y-%H%M%S').tar"
   echo Archiving $BACKUPNAME
   tar -cvf $BACKUPNAME -- *
-  echo Encrypting $BACKUPNAME
-  gpg --yes --quiet --batch --passphrase=$PASSPHRASE -c $BACKUPNAME
+  echo  _____                             _   _
+  echo | ____|_ __   ___ _ __ _   _ _ __ | |_(_)_ __   __ _
+  echo |  _| | '_ \ / __| '__| | | | '_ \| __| | '_ \ / _` |
+  echo | |___| | | | (__| |  | |_| | |_) | |_| | | | | (_| |_ _ _
+  echo |_____|_| |_|\___|_|   \__, | .__/ \__|_|_| |_|\__, (_|_|_)
+  echo                        |___/|_|                |___/
+  gpg --batch --yes --quiet --passphrase=$PASSPHRASE -c $BACKUPNAME
 popd
