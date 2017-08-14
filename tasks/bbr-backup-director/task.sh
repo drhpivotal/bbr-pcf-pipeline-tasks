@@ -14,6 +14,14 @@ pushd director-backup-artifact
   BACKUPNAME="director-backup-$(date '+%m%d%y-%H%M%S').tar"
   echo Archiving $BACKUPNAME
   tar -cvf $BACKUPNAME -- *
-  echo Encrypting $BACKUPNAME
-  gpg --yes --quiet --batch --passphrase=$PASSPHRASE -c $BACKUPNAME
+  cat << "EOF"
+ _____                             _   _
+| ____|_ __   ___ _ __ _   _ _ __ | |_(_)_ __   __ _
+|  _| | '_ \ / __| '__| | | | '_ \| __| | '_ \ / _` |
+| |___| | | | (__| |  | |_| | |_) | |_| | | | | (_| |_ _ _
+|_____|_| |_|\___|_|   \__, | .__/ \__|_|_| |_|\__, (_|_|_)
+                       |___/|_|                |___/
+EOF
+  gpg --batch --yes --quiet --cipher-algo AES256 --passphrase=$PASSPHRASE -c $BACKUPNAME > /dev/null
+  mv $BACKUPNAME.gpg $BACKUPNAME.backup
 popd
