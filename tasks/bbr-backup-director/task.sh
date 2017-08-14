@@ -22,6 +22,6 @@ pushd director-backup-artifact
 |_____|_| |_|\___|_|   \__, | .__/ \__|_|_| |_|\__, (_|_|_)
                        |___/|_|                |___/
 EOF
-  gpg --batch --yes --quiet --cipher-algo AES256 --passphrase=$PASSPHRASE -c $BACKUPNAME.tar > /dev/null
+  gpg --batch --yes --quiet --cipher-algo AES256 --passphrase=$PASSPHRASE -c $BACKUPNAME > /dev/null
   mv $BACKUPNAME.tar.gpg $BACKUPNAME.backup
 popd
