@@ -28,5 +28,5 @@ EOF
 |_____|_| |_|\___|_|   \__, | .__/ \__|_|_| |_|\__, (_|_|_)
                        |___/|_|                |___/
 EOF
-  gpg --batch --yes --quiet --passphrase=$PASSPHRASE -c $BACKUPNAME > /dev/null
+  gpg --batch --yes --quiet --cipher-algo AES256 --passphrase=$PASSPHRASE -c $BACKUPNAME > /dev/null
 popd
