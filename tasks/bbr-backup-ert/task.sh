@@ -17,9 +17,9 @@ EOF
   --ca-cert "${BOSH_CA_CERT_PATH}" \
   backup --with-manifest
 
-  BACKUPNAME="ert-backup-$(date '+%m%d%y-%H%M%S').tar"
+  BACKUPNAME="ert-backup-$(date '+%m%d%y-%H%M%S')"
   echo Archiving $BACKUPNAME
-  tar -cvf $BACKUPNAME -- *
+  tar -cvf $BACKUPNAME.tar -- *
   cat << "EOF"
  _____                             _   _
 | ____|_ __   ___ _ __ _   _ _ __ | |_(_)_ __   __ _
@@ -28,5 +28,6 @@ EOF
 |_____|_| |_|\___|_|   \__, | .__/ \__|_|_| |_|\__, (_|_|_)
                        |___/|_|                |___/
 EOF
-  gpg --batch --yes --quiet --cipher-algo AES256 --passphrase=$PASSPHRASE -c $BACKUPNAME > /dev/null
+  gpg --batch --yes --quiet --cipher-algo AES256 --passphrase=$PASSPHRASE -c $BACKUPNAME.tar > /dev/null
+  mv $BACKUPNAME.tar $BACKUPNAME.backup
 popd
