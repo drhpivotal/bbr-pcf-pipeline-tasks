@@ -29,5 +29,5 @@ EOF
                        |___/|_|                |___/
 EOF
   gpg --batch --yes --quiet --cipher-algo AES256 --passphrase=$PASSPHRASE -c $BACKUPNAME.tar > /dev/null
-  mv $BACKUPNAME.tar.pgp $BACKUPNAME.backup
+  mv $BACKUPNAME.tar.gpg $BACKUPNAME.backup
 popd
